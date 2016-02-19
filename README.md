@@ -74,3 +74,4 @@ address, it may show it with a red padlock saying that it's unsecure.
 - [ ] Refactor code so it doesn't look like an eight-year-old wrote
       it.
 - [ ] Publish to `npm`.
+- [ ] Syntax highlighting for code snippets.
