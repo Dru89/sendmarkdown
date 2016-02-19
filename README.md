@@ -42,6 +42,7 @@ This is so you can send multiple emails at a time (at some point).
 
 The following arguments are also accepted as YAML front-matter on
 your markdown file:
+
 *  `to` &mdash; Use this field to specify an email address
    (or array of email addresses) that you would like to send
    the email to.
@@ -60,6 +61,7 @@ markdown file.
 ## Gotchas
 There are a few weird things that `sendmarkdown` that may cause some
 frustration:
+
 1. `sendmarkdown` uses the `sendmail` application by default, and
 expects you to have all of that already configured.  If you don't
 have it configured, you can't send emails.
@@ -68,6 +70,7 @@ that if you're sending emails to something like an `@gmail.com`
 address, it may show it with a red padlock saying that it's unsecure.
 
 ## What's left?
+
 - [ ] Handling other transports than `sendmail`
 - [ ] Making `sendmarkdown` an actual binary that can be run.
 - [ ] Send more than one email.
