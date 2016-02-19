@@ -57,7 +57,7 @@ your markdown file:
 If `sendmarkdown` can't find a subject from the command line or from
 the YAML front-matter, it will look at headers in your markdown as a
 last resort.  This means the first `h1`-`h6` will be used as the
-markdown file.
+subject line for the email.
 
 ## Gotchas
 There are a few weird things that `sendmarkdown` that may cause some
