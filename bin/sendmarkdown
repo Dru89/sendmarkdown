@@ -1,0 +1,48 @@
+#! /usr/bin/env node
+'use strict';
+
+let fs = require('fs');
+let path = require('path');
+let args = require('../lib/args');
+let sendmarkdown = require('../lib/sendmarkdown');
+
+function checkExists(file) {
+  if (!fs.existsSync(file)) throw new Error(`File not found: ${file}`);
+}
+
+function send(file) {
+  sendmarkdown(file.contents, args);
+}
+
+let files = args._.map(path.normalize);
+files.forEach(checkExists);
+let contents = files.map(s => { return { name: s, contents: fs.readFileSync(s, { encoding: 'utf8'}) } });
+
+if (process.stdin.isTTY) {
+  if (contents.length === 0) {
+    throw new Error('Must provide a file to read from (or use STDIN).');
+  }
+
+  // TODO: support more than one file at a time.
+  // contents.forEach(send);
+  send(contents[0]);
+} else {
+  let buffers = [];
+  process.stdin.on('data', function(chunk) {
+      buffers.push(chunk);
+  });
+
+  process.stdin.on('end', function() {
+      if (buffers.length !== 0) {
+          contents.unshift({ name: "STDIN", contents: Buffer.concat(buffers).toString() });
+      }
+
+      if (contents.length === 0) {
+        throw new Error('Must provide a file to read from (or send markdown to STDIN).')
+      }
+
+      // TODO: support more than one file at a time.
+      // contents.forEach(send);
+      send(contents[0]);
+  });
+}
