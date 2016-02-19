@@ -8,6 +8,7 @@ send it.
 I write a lot of notes in markdown.  Frequently, I'd like to
 mail these notes to coworkers, myself, etc. for reference and
 to get questions answered.  My usual workflow looked like this:
+
 1. Open the markdown document in something like Atom.
 2. Preview the markdown as HTML.
 3. Copy the HTML and paste it into a new email.
